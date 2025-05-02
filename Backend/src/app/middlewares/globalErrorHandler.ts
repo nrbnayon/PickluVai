@@ -1,3 +1,4 @@
+// src\app\middlewares\globalErrorHandler.ts
 import { ErrorRequestHandler } from 'express';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';

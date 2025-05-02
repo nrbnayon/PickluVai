@@ -1,26 +1,27 @@
 // src\enums\common.ts
+
 export enum USER_ROLES {
+  SUPER_ADMIN = 'SUPER_ADMIN',
   ADMIN = 'ADMIN',
   USER = 'USER',
 }
 
 export enum AUTH_PROVIDER {
-  GOOGLE = 'google', // gmail
-  MICROSOFT = 'microsoft', // outlook
-  YAHOO = 'yahoo', // yahoo
-  LOCAL = 'local', // Local email/password login
+  SOCIAL = 'social', // Social login (Google, Facebook, etc.)
+  LOCAL = 'local', // Local email/password or phone/password login
 }
 
 export enum USER_STATUS {
   ACTIVE = 'ACTIVE',
   INACTIVE = 'INACTIVE',
   BLOCKED = 'BLOCKED',
-  DEACTIVATE = 'deactivate',
-  DELETE = 'delete',
-  BLOCK = 'block',
-  PENDING = 'pending',
-  APPROVED = 'approved',
+  DEACTIVATE = 'DEACTIVATE',
+  DELETE = 'DELETE',
+  BLOCK = 'BLOCK',
+  PENDING = 'PENDING',
+  APPROVED = 'APPROVED',
 }
+
 export enum USER_GENDER {
   MALE = 'male',
   FEMALE = 'female',

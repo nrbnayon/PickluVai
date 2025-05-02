@@ -1,14 +1,16 @@
 import colors from 'colors';
-import { User } from '../app/modules/user/user.model';
 import config from '../config';
 import { AUTH_PROVIDER, USER_ROLES, USER_STATUS } from '../enums/common';
 import { logger } from '../shared/logger';
+import { User } from '../app/modules/auth/auth.model';
 
 const superUser = {
   name: 'Nayon',
-  role: USER_ROLES.ADMIN,
-  email: config.admin.email,
-  password: config.admin.password,
+  role: USER_ROLES.SUPER_ADMIN,
+  email: config.super_admin.email,
+  password: config.super_admin.password,
+  phoneNumber: +880123456789,
+  phoneNumberVerified: true,
   image: '',
   verified: true,
   status: USER_STATUS.ACTIVE,
@@ -17,16 +19,16 @@ const superUser = {
 
 const seedAdmin = async () => {
   const isExistSuperAdmin = await User.findOne({
-    role: USER_ROLES.ADMIN,
+    role: USER_ROLES.SUPER_ADMIN,
   });
 
   const isExistEmail = await User.findOne({
-    email: config.admin.email,
+    email: config.super_admin.email,
   });
 
   if (!isExistSuperAdmin && !isExistEmail) {
     await User.create(superUser);
-    logger.info(colors.green('✔  Admin created successfully!'));
+    logger.info(colors.green('✔ Super Admin created successfully!'));
   } else if (isExistEmail && !isExistSuperAdmin) {
     logger.info(
       colors.yellow('⚠️  Admin email already exists with different role!')

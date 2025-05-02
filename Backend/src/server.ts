@@ -1,3 +1,4 @@
+// src\server.ts
 import colors from 'colors';
 import mongoose from 'mongoose';
 import app from './app';

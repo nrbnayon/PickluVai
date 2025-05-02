@@ -1,3 +1,4 @@
+// src\shared\sendResponse.ts
 import { Response } from 'express';
 
 type IData<T> = {

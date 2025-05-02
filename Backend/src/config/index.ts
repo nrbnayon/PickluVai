@@ -51,12 +51,18 @@ export default {
     secure: process.env.NODE_ENV === 'production',
     httpOnly: true,
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    maxAge: 30 * 24 * 60 * 60 * 1000, 
+    maxAge: 30 * 24 * 60 * 60 * 1000,
     path: '/',
     domain:
       process.env.NODE_ENV === 'production'
         ? process.env.COOKIE_DOMAIN
         : undefined,
+  },
+
+  firebase: {
+    project_id: process.env.FIREBASE_PROJECT_ID,
+    client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    private_key: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
   },
 
   oauth: {
@@ -84,8 +90,8 @@ export default {
   },
 
   super_admin: {
-    email: process.env.ADMIN_EMAIL,
-    password: process.env.ADMIN_PASSWORD,
+    email: process.env.SUPER_ADMIN_EMAIL,
+    password: process.env.SUPER_ADMIN_PASSWORD,
   },
 
   payment: {
@@ -100,15 +106,15 @@ export default {
     },
     basic: {
       name: 'basic',
-      price: 5.00,
+      price: 5.0,
     },
     premium: {
       name: 'premium',
-      price: 15.00,
+      price: 15.0,
     },
     enterprise: {
       name: 'enterprise',
-      price: 20.00,
+      price: 20.0,
     },
   },
 };

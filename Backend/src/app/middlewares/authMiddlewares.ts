@@ -4,9 +4,9 @@ import jwt from 'jsonwebtoken';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
 import { jwtHelper } from '../../helpers/jwtHelper';
-import { User } from '../modules/user/user.model';
 import { AUTH_PROVIDER, USER_ROLES, USER_STATUS } from '../../enums/common';
 import { cookieHelper, safeCookie } from '../../helpers/cookieHelper';
+import { User } from '../modules/auth/auth.model';
 
 // Consider using a proper logger instead of console.log for production
 const logger = {
@@ -21,9 +21,10 @@ const logger = {
 export interface AuthRequest extends Request {
   user: {
     userId: string;
-    role: USER_ROLES;
-    email: string;
     name: string;
+    email?: string;
+    phoneNumber?: string;
+    role: USER_ROLES;
     authProvider?: AUTH_PROVIDER;
   };
   tokenRefreshed?: boolean;
@@ -167,8 +168,8 @@ const auth =
               {
                 userId: user._id.toString(),
                 role: user.role,
-                email: user.email,
-                name: user.name,
+                email: user.email ?? undefined,
+                name: user.name ?? undefined,
                 authProvider: user.authProvider,
               },
               config.jwt.secret,
@@ -184,8 +185,8 @@ const auth =
             authReq.user = {
               userId: user._id.toString(),
               role: user.role,
-              email: user.email,
-              name: user.name,
+              email: user.email ?? undefined,
+              name: user.name ?? 'Unknown',
               authProvider: user.authProvider,
             };
             authReq.tokenRefreshed = true;
@@ -237,6 +238,23 @@ export const setRefreshedTokenCookie = (
     logger.info('Refreshed access token cookie set');
   }
 
+  next();
+};
+
+/**
+ * Middleware to check if the user has verified their phone number
+ */
+export const phoneVerifiedMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  if (!req.user) {
+    return res.status(401).json({ message: 'Unauthorized: Authentication required' });
+  }
+  
+  if (!req.user.phoneNumber) {
+    return res
+      .status(403)
+      .json({ message: 'Forbidden: Phone verification required' });
+  }
+  
   next();
 };
 

@@ -1,12 +1,13 @@
+// home.ts;
+// Home route HTML content
+export const homePageHTML = `
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Chatbot Project - Client Information</title>
+  <title>Backend Information</title>
 </head>
-
 <body style="
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       background-color: #f9f9f9;
@@ -22,6 +23,7 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       ">
     <!-- Header -->
+    <h1 style="text-align:center; color:#A55FEF; font-family:Verdana;">Hey Frontend Developer, How can I assist you today!</h1>
     <div style="
           background-color: #4caf50;
           color: white;
@@ -60,7 +62,7 @@
             ">
           Developer Details
         </h3>
-        <p><strong>Full Stack Developer:</strong> Nayon</p>
+        <p><strong>Software Engineer:</strong> Nayon</p>
         <p><strong>Location:</strong> Dhaka, Bangladesh</p>
       </div>
 
@@ -98,5 +100,5 @@
     </div>
   </div>
 </body>
-
 </html>
+`;

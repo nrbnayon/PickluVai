@@ -1,3 +1,4 @@
+// src\errors\ApiError.ts
 class ApiError extends Error {
   statusCode: number;
   constructor(statusCode: number, message: string | undefined, stack = '') {

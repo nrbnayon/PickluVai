@@ -1,3 +1,4 @@
+// src\types\auth.ts
 import { USER_ROLES } from '../enums/common';
 export type SocialLoginType = 'GOOGLE' | 'APPLE';
 

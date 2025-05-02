@@ -20,7 +20,7 @@ console.log('SMTP Email Sending from:', config.email.from);
 const sendEmail = async (values: ISendEmail) => {
   try {
     const info = await transporter.sendMail({
-      from: `"AI-ChatBot" <${config.email.from}>`,
+      from: `"Picklu" <${config.email.from}>`,
       to: values.to,
       subject: values.subject,
       html: values.html,

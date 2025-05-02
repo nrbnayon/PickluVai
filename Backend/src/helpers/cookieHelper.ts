@@ -30,12 +30,12 @@ const getBaseOptions = (): Omit<BaseCookieOptions, 'maxAge'> => {
 export const cookieHelper = {
   getAccessTokenOptions: (): BaseCookieOptions => ({
     ...getBaseOptions(),
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   }),
 
   getRefreshTokenOptions: (): BaseCookieOptions => ({
     ...getBaseOptions(),
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    maxAge: 15 * 24 * 60 * 60 * 1000, // 15 days
   }),
 };
 
